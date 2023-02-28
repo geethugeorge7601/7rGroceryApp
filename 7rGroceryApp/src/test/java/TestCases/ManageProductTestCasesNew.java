@@ -2,8 +2,6 @@ package TestCases;
 
 import java.io.IOException;
 
-import org.apache.commons.compress.archivers.dump.DumpArchiveConstants.COMPRESSION_TYPE;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,18 +10,18 @@ import ElementRepository.ManageProduct;
 import Utilities.ExcelRead;
 import constant.Constant;
 
-public class ManageProductTestCases extends BaseClass {
-
+public class ManageProductTestCasesNew extends BaseClass{
 	ManageProduct mp;
 	LoginPage lp;
 	ExcelRead er;
-	public ManageProductTestCases() throws IOException {
+	public ManageProductTestCasesNew() throws IOException {
 		er = new ExcelRead();
 	}
 	
 	@Test
 	public void verifyWhetherManageProductTabIsSelected() {
 		lp = new LoginPage(driver);
+		
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();
@@ -90,6 +88,4 @@ public class ManageProductTestCases extends BaseClass {
 		boolean actualResult=mp.getProductsListedCorrespondingToCategory(prop.getProperty("ProductCategoryToSearch"));
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_PRODUCTLISTED_CATEGORY);
 	}
-
 }
-

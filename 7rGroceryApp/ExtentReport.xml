@@ -6,8 +6,8 @@
 		<classes>
 			<class name="TestCases.LoginPageTestCases" />
 			<class name="TestCases.HomePageTestCases" />
-			<class name="TestCases.ManageExpensePageTestCases" />
-			<class name="TestCases.ManageProductTestCases" />
+			<class name="TestCases.ManageExpenseTestCases" />
+			<class name="TestCases.ManageProductTestCasesNew" />
 		</classes>
 	</test>
 </suite>
