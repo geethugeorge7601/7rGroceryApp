@@ -1,0 +1,13 @@
+<suite name="My Test Suite">
+	<listeners>
+		<listener class-name="Utilities.ExtentReport" />
+	</listeners>
+	<test name="My Test">
+		<classes>
+			<class name="TestCases.LoginPageTestCases" />
+			<class name="TestCases.HomePageTestCases" />
+			<class name="TestCases.ManageExpensePageTestCases" />
+			<class name="TestCases.ManageProductTestCases" />
+		</classes>
+	</test>
+</suite>
