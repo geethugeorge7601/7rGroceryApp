@@ -90,7 +90,6 @@ public class ManageProductTestCases extends BaseClass {
 		boolean actualResult=mp.getProductsListedCorrespondingToCategory(prop.getProperty("ProductCategoryToSearch"));
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_PRODUCTLISTED_CATEGORY);
 	}
-	
 
 }
 
