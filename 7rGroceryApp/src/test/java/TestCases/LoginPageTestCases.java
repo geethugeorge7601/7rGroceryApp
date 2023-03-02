@@ -18,10 +18,8 @@ import org.testng.annotations.AfterMethod;
 
 public class LoginPageTestCases  extends BaseClass   {
 	LoginPage lp;
-	ExcelRead er;
-	public LoginPageTestCases() throws IOException {
-	 er= new ExcelRead();
-	}
+	ExcelRead er = new ExcelRead();
+
 	@Test
 	public void verifyTheTextOfSignInButton() throws IOException {
 		lp = new LoginPage(driver);

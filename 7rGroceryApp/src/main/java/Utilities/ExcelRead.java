@@ -1,6 +1,7 @@
 package Utilities;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -12,16 +13,25 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 public class ExcelRead {
-
+	
 		XSSFSheet sh;
 		Row r;
 		Cell c;
 
-		public ExcelRead() throws IOException{
-			FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\ExcelFiles\\7rGroceryApp.xlsx");
+		public ExcelRead() {
+			FileInputStream file;
+			try {
+				file = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\ExcelFiles\\7rGroceryApp.xlsx");
+			 
 			XSSFWorkbook wb = new XSSFWorkbook(file);
 			sh = wb.getSheet("Sheet1");
+			}
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
 		public String readdata(int i, int j) {
 
 			r = sh.getRow(i);
@@ -47,8 +57,9 @@ public class ExcelRead {
 			return rows;
 		}
 
-		
+}
 
-	}
+
+
 
 

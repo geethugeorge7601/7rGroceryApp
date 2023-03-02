@@ -13,10 +13,8 @@ import constant.Constant;
 public class HomePageTestCases extends BaseClass {
 	LoginPage lp;
 	HomePage hp;
-	ExcelRead er;
-	public HomePageTestCases() throws IOException {
-		 er= new ExcelRead();
-		}
+	ExcelRead er = new ExcelRead();
+
 	@Test
 	public void verifyWhetherManagePagesIsLoadedWhenMoreInfoClicked() {
 		lp = new LoginPage(driver);
@@ -37,7 +35,6 @@ public class HomePageTestCases extends BaseClass {
 		String actualUrl=driver.getCurrentUrl();
 		String expectedUrl=prop.getProperty("AdminUsersPageURL");
 		Assert.assertEquals(actualUrl, expectedUrl,Constant.ERRORMESSAGE_ADMINUSERSPAGE);
-
 	}
 	@Test
 	public void verifyTheBackgroundColorOfManagePagesIcon() {

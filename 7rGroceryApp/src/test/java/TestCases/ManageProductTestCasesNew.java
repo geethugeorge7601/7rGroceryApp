@@ -13,15 +13,11 @@ import constant.Constant;
 public class ManageProductTestCasesNew extends BaseClass{
 	ManageProduct mp;
 	LoginPage lp;
-	ExcelRead er;
-	public ManageProductTestCasesNew() throws IOException {
-		er = new ExcelRead();
-	}
+	ExcelRead er = new ExcelRead();
 	
 	@Test
 	public void verifyWhetherManageProductTabIsSelected() {
 		lp = new LoginPage(driver);
-		
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();

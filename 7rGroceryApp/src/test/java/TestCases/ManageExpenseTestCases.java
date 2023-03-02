@@ -15,11 +15,7 @@ public class ManageExpenseTestCases extends BaseClass {
 
 	LoginPage lp;
 	ManageExpense me;
-	ExcelRead er;
-
-	public ManageExpenseTestCases() throws IOException {
-		er = new ExcelRead();
-	}
+	ExcelRead er = new ExcelRead();
 
 	@Test(priority = 1)
 	public void verifyWhetherExpenseCategoryTabIsSelected() {

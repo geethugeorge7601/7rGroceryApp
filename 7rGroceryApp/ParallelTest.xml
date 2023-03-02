@@ -1,0 +1,22 @@
+<suite name="ParallelTest" parallel="tests" thread-count="2">
+	<test name="Chrome">
+	<parameter name="browser" value ="chrome"></parameter>
+		<classes>
+			<class name="TestCases.LoginPageTestCases" />
+			<class name="TestCases.HomePageTestCases" />
+			<class name="TestCases.ManageExpenseTestCases" />
+			<class name="TestCases.ManageProductTestCasesNew" />
+			<class name ="TestCases.ManageUsersTestCases" />
+		</classes>
+	</test>
+	<test name="Edge">
+	<parameter name="browser" value ="edge"></parameter>
+		<classes>
+			<class name="TestCases.LoginPageTestCases" />
+			<class name="TestCases.HomePageTestCases" />
+			<class name="TestCases.ManageExpenseTestCases" />
+			<class name="TestCases.ManageProductTestCasesNew" />
+			<class name ="TestCases.ManageUsersTestCases" />
+		</classes>
+	</test>
+</suite>
