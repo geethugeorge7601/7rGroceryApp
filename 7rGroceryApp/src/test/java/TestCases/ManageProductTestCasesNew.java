@@ -16,7 +16,7 @@ public class ManageProductTestCasesNew extends BaseClass{
 	LoginPage lp;
 	ExcelRead er = new ExcelRead();
 	
-//	@Test
+	@Test
 	public void verifyWhetherManageProductTabIsSelected() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
@@ -27,7 +27,7 @@ public class ManageProductTestCasesNew extends BaseClass{
 	}
 	
 
-//	@Test
+	@Test
 	public void verifyTheBackgroundColorOfNewButton() {
 
 		lp = new LoginPage(driver);
@@ -40,7 +40,7 @@ public class ManageProductTestCasesNew extends BaseClass{
 
 	}
 
-//	@Test
+	@Test
 	public void verifyTheNonVegRadioButtonIsSelected() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
@@ -52,7 +52,7 @@ public class ManageProductTestCasesNew extends BaseClass{
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_RADIOBUTTON_NONVEG);
 	}
 
-//	@Test
+	@Test
 	public void verifyThePlaceHolderTextOfProductTitle() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
