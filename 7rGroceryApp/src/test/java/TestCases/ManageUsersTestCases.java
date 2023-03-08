@@ -15,6 +15,7 @@ public class ManageUsersTestCases extends BaseClass {
 	ManageUsersPage mu;
 	ExcelRead er = new ExcelRead();
 	@Test(priority =1)
+
 	public void verifyTheFontSizeOfPageTitle() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
