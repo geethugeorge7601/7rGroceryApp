@@ -1,0 +1,14 @@
+<suite name="GroupingSuite">
+	<test name="GroupingTest">
+		<groups>
+			<run>
+				<include name="High"></include>
+				<include name="Critical"></include>
+			</run>
+		</groups>
+		<parameter name="browser" value ="chrome"></parameter>
+		<classes>
+			<class name="TestCases.LoginPageTestCases" />
+		</classes>
+	</test>
+</suite>

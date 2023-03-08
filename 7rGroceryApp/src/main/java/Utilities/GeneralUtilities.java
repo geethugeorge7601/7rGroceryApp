@@ -1,8 +1,15 @@
 package Utilities;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class GeneralUtilities {
@@ -62,7 +69,7 @@ public class GeneralUtilities {
 		}
 		return value;
 	}
-	public boolean verifyWhetherTabIsSelected(WebElement element,String attributeType,String text) {
+	public boolean verifyWhetherOptionIsSelected(WebElement element,String attributeType,String text) {
 		boolean value =element.getAttribute(attributeType).contains(text);
 		return value;
 	}
@@ -72,5 +79,27 @@ public class GeneralUtilities {
 	public boolean verifyWhetherAnElementIsDisplayed(WebElement element) {
 		boolean value = element.isDisplayed();
 		return value;
+	}
+	
+	public void fileUpload(String imageName)  {
+		try {
+		Robot obj=new Robot();
+		//Java Code for copy file path to system clipboard "C:\Users\Geethu\git\7rGroceryApp\7rGroceryApp\src\main\resources\Image Files\IMG_20221019_103510.jpg"
+	     StringSelection ss = new StringSelection(System.getProperty("user.dir") + "\\src\\main\\resources\\Image Files\\"+imageName);
+	     Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
+	     obj.delay(250);
+	     obj.keyPress(KeyEvent.VK_CONTROL);
+	     obj.keyPress(KeyEvent.VK_V);
+	     obj.delay(250);
+	     obj.keyRelease(KeyEvent.VK_CONTROL);
+	     obj.keyRelease(KeyEvent.VK_V);
+	     obj.delay(250);
+	     obj.keyPress(KeyEvent.VK_ENTER);
+	     obj.keyRelease(KeyEvent.VK_ENTER);
+	     obj.delay(250);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

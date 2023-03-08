@@ -4,9 +4,7 @@
 		<classes>
 			<class name="TestCases.LoginPageTestCases" />
 			<class name="TestCases.HomePageTestCases" />
-			<class name="TestCases.ManageExpenseTestCases" />
-			<class name="TestCases.ManageProductTestCasesNew" />
-			<class name ="TestCases.ManageUsersTestCases" />
+			
 		</classes>
 	</test>
 	<test name="Edge">
@@ -14,9 +12,6 @@
 		<classes>
 			<class name="TestCases.LoginPageTestCases" />
 			<class name="TestCases.HomePageTestCases" />
-			<class name="TestCases.ManageExpenseTestCases" />
-			<class name="TestCases.ManageProductTestCasesNew" />
-			<class name ="TestCases.ManageUsersTestCases" />
 		</classes>
 	</test>
 </suite>

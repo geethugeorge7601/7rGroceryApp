@@ -28,32 +28,29 @@ public class BaseClass {
 	}
 	
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	@Parameters("browser")
 	public void beforeMethod(String browserValue) throws IOException {
 		testBasic();
-		if(browserValue.equals("chrome")) {
+		if(browserValue.equals(prop.getProperty("Browser1"))) {
 			driver = new ChromeDriver();	
 		}
-		else if(browserValue.equals("edge")) {
+		else if(browserValue.equals(prop.getProperty("Browser2"))) {
 			driver = new EdgeDriver();
 		}
-		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000)); // implicit wait
 		driver.manage().window().maximize();
 		driver.get(prop.getProperty("BaseURL"));
-		
 	}
-
-	@AfterMethod
+	 
+	@AfterMethod(alwaysRun = true)
 	public void afterMethod(ITestResult itestResult) throws IOException {
 		
 		if(itestResult.getStatus()==ITestResult.FAILURE) {
 			scr= new ScreenshotUtility();
 			scr.captureFailureScreenShot(driver, itestResult.getName());
 		}
-		
 		driver.close();
 	}
 }

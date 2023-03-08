@@ -23,4 +23,6 @@ public class Constant {
 	public static final String ERRORMESSAGE_PRODUCTLISTED_CATEGORY= "The product listed according to category given was not as expected";
 	public static final String ERRORMESSAGE_DELETING_EXPENSECATEGORY = "The expense category is not deleted as expected";
 	public static final String ERRORMESSAGE_PAGETITLE_FONTSIZE = "The Font size of page Title is not as expected";
+	public static final String ERRORMESSAGE_USERSNOTADDED ="Users are not added as expected";
+	public static final String ERRORMESSAGE_USERSNOTDELETED ="User is not Deleted as expected";
 }

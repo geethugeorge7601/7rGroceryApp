@@ -3,12 +3,14 @@
 		<listener class-name="Utilities.ExtentReport" />
 	</listeners>
 	<test name="My Test">
+	<parameter name="browser" value ="chrome"></parameter>
 		<classes>
 			<class name="TestCases.LoginPageTestCases" />
 			<class name="TestCases.HomePageTestCases" />
 			<class name="TestCases.ManageExpenseTestCases" />
 			<class name="TestCases.ManageProductTestCasesNew" />
 			<class name ="TestCases.ManageUsersTestCases" />
+			<class name ="TestCases.AdminUsersTestCases" />
 		</classes>
 	</test>
 </suite>

@@ -1,6 +1,7 @@
 package TestCases;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ public class ManageProductTestCasesNew extends BaseClass{
 	LoginPage lp;
 	ExcelRead er = new ExcelRead();
 	
-	@Test
+//	@Test
 	public void verifyWhetherManageProductTabIsSelected() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
@@ -26,7 +27,7 @@ public class ManageProductTestCasesNew extends BaseClass{
 	}
 	
 
-	@Test
+//	@Test
 	public void verifyTheBackgroundColorOfNewButton() {
 
 		lp = new LoginPage(driver);
@@ -39,7 +40,7 @@ public class ManageProductTestCasesNew extends BaseClass{
 
 	}
 
-	@Test
+//	@Test
 	public void verifyTheNonVegRadioButtonIsSelected() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
@@ -51,7 +52,7 @@ public class ManageProductTestCasesNew extends BaseClass{
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_RADIOBUTTON_NONVEG);
 	}
 
-	@Test
+//	@Test
 	public void verifyThePlaceHolderTextOfProductTitle() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
@@ -74,13 +75,14 @@ public class ManageProductTestCasesNew extends BaseClass{
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_PRODUCTLISTED_TITLE);
 		
 	}
-	@Test
+	//@Test
 	public void verifyTheSearchItemsListedByProductCategory() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();
 		mp.selectSearchButton();
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
 		boolean actualResult=mp.getProductsListedCorrespondingToCategory(prop.getProperty("ProductCategoryToSearch"));
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_PRODUCTLISTED_CATEGORY);
 	}

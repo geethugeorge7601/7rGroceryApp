@@ -1,5 +1,6 @@
 package ElementRepository;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -19,7 +20,8 @@ public class ManageProduct {
 		this.driver = driver;
 		PageFactory.initElements(driver, this); // initialize elements find by @findBy - with pagefactory
 	}
-
+	
+	
 	@FindBy(linkText = "Manage Product")
 	WebElement manageProductPage;
 
@@ -91,12 +93,14 @@ public class ManageProduct {
 	
 	public boolean getProductsListedCorrespondingToCategory(String category) {
 		gu.selectDropDownValueByVisibleText(categoryDropDown,category);
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
 		clickSearchActionButton();
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
 		return gu.checkItemsListedWhenSearch(productCategoryColumnElements,category);
 	}
 	
 	public boolean checkWhetherManageProductTabIsSelected() {
-		return gu.verifyWhetherTabIsSelected(manageProductPage,"class","active");
+		return gu.verifyWhetherOptionIsSelected(manageProductPage,"class","active");
 		
 	}
 }

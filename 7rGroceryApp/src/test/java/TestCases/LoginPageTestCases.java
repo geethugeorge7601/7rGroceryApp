@@ -20,24 +20,22 @@ public class LoginPageTestCases  extends BaseClass   {
 	LoginPage lp;
 	ExcelRead er = new ExcelRead();
 
-	@Test
-	public void verifyTheTextOfSignInButton() throws IOException {
+	@Test(priority=1)
+	public void verifyTheTextOfSignInButton()  {
 		lp = new LoginPage(driver);
 		String actualResult = lp.getTextOfSignInButton();
-		er=new ExcelRead();
 		String expectedResult = er.readdata(7,1);
 		Assert.assertEquals(actualResult, expectedResult, Constant.ERRORMESSAGELOGINBUTON);
 	}
 	
-	@Test
-
+	@Test(groups = "Critical",priority =2)
 	public void verifyWhetherTheCheckBoxElementIsSelected() {
 		lp = new LoginPage(driver);
 		lp.selectRememberMeCheckBox();
 		boolean actualResult = lp.checkRememberMeCheckBoxIsSelected();
 		Assert.assertTrue(actualResult, Constant.ERRORMESSAGE_REMEMBERME_CHECKBOX );
 	}
-	@Test
+	@Test(groups ="High", priority =3)
 	public void verifyTheBackGroundColorOfSignInButton() {
 		lp = new LoginPage(driver);
 		String actualResult=lp.getBackroundColorOfSignInButton();
@@ -45,7 +43,7 @@ public class LoginPageTestCases  extends BaseClass   {
 		Assert.assertEquals(actualResult, expectedResult,Constant.ERRORMESSAGE_BACKGROUNDCOLOR);
 	
 	}
-	@Test
+	@Test(groups ="High", priority =4)
 	public void verifyLoginWithValidCredentials() throws IOException {
 		testBasic();
 		lp = new LoginPage(driver);
@@ -55,7 +53,7 @@ public class LoginPageTestCases  extends BaseClass   {
 		Assert.assertEquals(actualUrl, expectedUrl,Constant.ERRORMESSAGE_LOGIN);
 	}
 	
-	@Test
+	@Test(groups = "Critical",priority =5)
 	public void verifyLoginwithInvalidCredentails() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(4,1),er.readdata(5,1));
@@ -64,7 +62,7 @@ public class LoginPageTestCases  extends BaseClass   {
 		Assert.assertEquals(actualUrl, expectedUrl,Constant.ERRORMESSAGE_INVALIDLOGIN);
 	}
 	
-	@Test
+	@Test(groups = {"Critical"},priority =6)
 	public void verifyTheAlertMessageForLoginError() {
 		lp = new LoginPage(driver);
 		lp.loginToApp(er.readdata(4,1),er.readdata(5,1));
@@ -76,7 +74,7 @@ public class LoginPageTestCases  extends BaseClass   {
 	}
 	
 	
-	@Test
+	@Test(groups = {"High","Critical"},priority =7)
 	public void verifyWhetherPasswordFieldIsMasked() {
 		lp = new LoginPage(driver);
 		String actualResult =lp.getAttributeValueTypeForPassword();

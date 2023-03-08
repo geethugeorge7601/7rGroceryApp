@@ -54,7 +54,7 @@ public class ManageExpense {
 	}
 
 	public boolean checkWhetherExpenseCategoryTabIsSelected() {
-		return gu.verifyWhetherTabIsSelected(expenseCategoryTab, "class", "active");
+		return gu.verifyWhetherOptionIsSelected(expenseCategoryTab, "class", "active");
 
 	}
 
@@ -73,16 +73,17 @@ public class ManageExpense {
 		return gu.verifyWhetherAnItemIsInList(expenses, title);
 
 	}
+
 	public void deleteExpenseCategory(String expenseCategoryName) {
-				String locator = null;
-			for (int i = 0; i < expenseCategory.size(); i++) {
-				if (expenseCategory.get(i).getText().equals(expenseCategoryName)) {
-					locator = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr[" + (i + 1)+ "]//td[2]//a[2]";
-					break;
-				}
+		String locator = null;
+		for (int i = 0; i < expenseCategory.size(); i++) {
+			if (expenseCategory.get(i).getText().equals(expenseCategoryName)) {
+				locator = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr[" + (i + 1)+ "]//td[2]//a[2]";
+				break;
 			}
-			WebElement deleteItem = driver.findElement(By.xpath(locator));
-			deleteItem.click();
+		}
+		WebElement deleteItem = driver.findElement(By.xpath(locator));
+		deleteItem.click();
 	}
 	public boolean verifyWhetherExpensecategoryIsDeleted(String expenseCategoryName) {
 		deleteExpenseCategory(expenseCategoryName);
