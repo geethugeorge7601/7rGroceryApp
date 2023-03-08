@@ -30,6 +30,7 @@ public class AdminUsersTestCases extends BaseClass {
 		au.addNewUsers(username,ru.randomPassword(),type);
 		boolean actual =au.verifyUserIsPresent(username);
 		Assert.assertTrue(actual,Constant.ERRORMESSAGE_USERSNOTADDED);
+		
 		}
 
 	@Test( dataProvider = "create_data",dataProviderClass = DataProviderClass.class, priority = 2)
