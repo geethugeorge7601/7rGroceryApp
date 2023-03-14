@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import ElementRepository.LoginPage;
 import ElementRepository.ManageProduct;
 import Utilities.ExcelRead;
+import Utilities.RetryUtils;
 import constant.Constant;
 
 public class ManageProductTestCasesNew extends BaseClass{
@@ -16,10 +17,10 @@ public class ManageProductTestCasesNew extends BaseClass{
 	LoginPage lp;
 	ExcelRead er = new ExcelRead();
 	
-	@Test
+	@Test(groups = { "regression" },priority = 1)
 	public void verifyWhetherManageProductTabIsSelected() {
 		lp = new LoginPage(driver);
-		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
+		lp.loginToApp(prop.getProperty("Username"), prop.getProperty("Password"));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();
 		boolean actual=mp.checkWhetherManageProductTabIsSelected();
@@ -27,11 +28,11 @@ public class ManageProductTestCasesNew extends BaseClass{
 	}
 	
 
-	@Test
+	@Test(groups = { "regression" },priority = 2)
 	public void verifyTheBackgroundColorOfNewButton() {
 
 		lp = new LoginPage(driver);
-		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
+		lp.loginToApp(prop.getProperty("Username"), prop.getProperty("Password"));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();
 		String actualResult = mp.getBackGroundColorOfNewButton();
@@ -40,10 +41,10 @@ public class ManageProductTestCasesNew extends BaseClass{
 
 	}
 
-	@Test
+	@Test(groups = { "regression" },priority = 3)
 	public void verifyTheNonVegRadioButtonIsSelected() {
 		lp = new LoginPage(driver);
-		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
+		lp.loginToApp(prop.getProperty("Username"), prop.getProperty("Password"));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();
 		mp.selectNewButton();
@@ -52,10 +53,10 @@ public class ManageProductTestCasesNew extends BaseClass{
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_RADIOBUTTON_NONVEG);
 	}
 
-	@Test
+	@Test(groups = { "regression" },priority = 4)
 	public void verifyThePlaceHolderTextOfProductTitle() {
 		lp = new LoginPage(driver);
-		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
+		lp.loginToApp(prop.getProperty("Username"), prop.getProperty("Password"));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();
 		mp.selectSearchButton();
@@ -64,10 +65,10 @@ public class ManageProductTestCasesNew extends BaseClass{
 		Assert.assertEquals(actualResult, expectedResult, "Placeholder text of Title field is not as expected");
 	}
 	
-	@Test
+	@Test(retryAnalyzer = RetryUtils.class,groups = { "regression" },priority = 5)
 	public void verifyTheSearchItemsListedByProductTitle() {
 		lp = new LoginPage(driver);
-		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
+		lp.loginToApp(prop.getProperty("Username"), prop.getProperty("Password"));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();
 		mp.selectSearchButton();
@@ -75,15 +76,15 @@ public class ManageProductTestCasesNew extends BaseClass{
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_PRODUCTLISTED_TITLE);
 		
 	}
-	//@Test
-	public void verifyTheSearchItemsListedByProductCategory() {
+	@Test(retryAnalyzer = RetryUtils.class,groups = { "regression" },priority = 6)
+	public void verifyTheSearchItemsListedByProductCode() {
 		lp = new LoginPage(driver);
-		lp.loginToApp(er.readdata(2,1),er.readdata(3, 1));
+		lp.loginToApp(prop.getProperty("Username"), prop.getProperty("Password"));
 		mp = new ManageProduct(driver);
 		mp.selectManageProdutPage();
 		mp.selectSearchButton();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
-		boolean actualResult=mp.getProductsListedCorrespondingToCategory(prop.getProperty("ProductCategoryToSearch"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000)); 
+		boolean actualResult=mp.getProductWithSpecificCode(prop.getProperty("ProductCode_ToSearch"));
 		Assert.assertTrue(actualResult,Constant.ERRORMESSAGE_PRODUCTLISTED_CATEGORY);
 	}
 }

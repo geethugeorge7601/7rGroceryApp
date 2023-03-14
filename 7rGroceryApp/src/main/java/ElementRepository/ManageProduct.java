@@ -11,10 +11,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import Utilities.GeneralUtilities;
+import Utilities.WaitUtility;
 
 public class ManageProduct {
 	WebDriver driver;
 	GeneralUtilities gu = new GeneralUtilities();
+	WaitUtility wu = new WaitUtility();
 
 	public ManageProduct(WebDriver driver) {
 		this.driver = driver;
@@ -48,6 +50,9 @@ public class ManageProduct {
 	
 	@FindBy(xpath="//select[@id='cat_id']")
 	WebElement categoryDropDown;
+	
+	@FindBy(xpath="//input[@placeholder='Product Code']")
+	WebElement productCode;
 	
 	public void selectManageProdutPage() {
 		manageProductPage.click();
@@ -93,14 +98,18 @@ public class ManageProduct {
 	
 	public boolean getProductsListedCorrespondingToCategory(String category) {
 		gu.selectDropDownValueByVisibleText(categoryDropDown,category);
-		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
 		clickSearchActionButton();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMillis(3000));
 		return gu.checkItemsListedWhenSearch(productCategoryColumnElements,category);
 	}
-	
+	public boolean getProductWithSpecificCode(String code) {
+		productCode.sendKeys(code);
+		clickSearchActionButton();
+		String locator = "//table[@class='table table-bordered table-hover table-sm']//tbody//td[1]//button[text()='P"+code+"']";
+		wu.presenceOfElementLocated(driver,locator);
+		WebElement productWithCode =driver.findElement(By.xpath(locator));
+		return productWithCode.isDisplayed();
+	}
 	public boolean checkWhetherManageProductTabIsSelected() {
-		return gu.verifyWhetherOptionIsSelected(manageProductPage,"class","active");
-		
+		return gu.verifyWhetherOptionIsSelected(manageProductPage,"class","active");	
 	}
 }

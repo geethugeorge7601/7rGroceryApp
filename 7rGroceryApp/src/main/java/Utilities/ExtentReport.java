@@ -58,6 +58,7 @@ public class ExtentReport implements ITestListener {
 		test = reports.createTest(result.getName());
 		test.log(Status.PASS,
 				MarkupHelper.createLabel("Name of the Passed Test Case is : " + result.getName(), ExtentColor.GREEN));
+		test.assignCategory(result.getMethod().getGroups());
 
 	}
 
@@ -65,14 +66,14 @@ public class ExtentReport implements ITestListener {
 		test = reports.createTest(result.getName());
 		test.log(Status.FAIL,
 				MarkupHelper.createLabel("Name of the Failed Test Case is : " + result.getName(), ExtentColor.RED));
-
+		test.assignCategory(result.getMethod().getGroups());
 	}
 
 	public void onTestSkipped(ITestResult result) {
 		test = reports.createTest(result.getName());
 		test.log(Status.SKIP,
 				MarkupHelper.createLabel("Name of the skipped test case is : " + result.getName(), ExtentColor.YELLOW));
-
+		test.assignCategory(result.getMethod().getGroups());
 	}
 
 }

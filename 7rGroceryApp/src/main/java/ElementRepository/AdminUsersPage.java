@@ -10,11 +10,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Utilities.GeneralUtilities;
+import Utilities.WaitUtility;
 
 public class AdminUsersPage {
 	WebDriver driver;
 	GeneralUtilities gu = new GeneralUtilities();
-
+	WaitUtility wu = new WaitUtility();
 	public AdminUsersPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this); // initialize elements find by @findBy - with pagefactory
@@ -37,10 +38,17 @@ public class AdminUsersPage {
 
 	@FindBy(xpath = "//button[@name='Create']")
 	WebElement saveButton;
+	
+	@FindBy(id="un")
+	WebElement searchName;
 
 	@FindBy(xpath = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr//td[1]")
 	//@FindBy(xpath="//table[@class='table table-bordered table-hover table-sm']//tbody//tr[not(contains(@class,'detail-row'))]//td[1]")
 	List<WebElement> usernameList;
+	
+	@FindBy(xpath="//a[@class='btn btn-rounded btn-primary']")
+	WebElement searchButton;
+	
 
 	public void selectAdminUsersPage() {
 		adminUsersLink.click();
@@ -60,16 +68,21 @@ public class AdminUsersPage {
 	public void deleteUser(String user) {
 		String locator = null;
 		for (int i = 0; i < usernameList.size(); i += 2) {
-			//System.out.println(usernameList.get(i).getText());
 			if ((usernameList.get(i).getText()).equals(user)) {
 				locator = "//table[@class='table table-bordered table-hover table-sm']//tbody//tr[" + (i + 1)
 						+ "]//td[5]//a[3]";
 				break;
 			}
 		}
-		System.out.println("locator" + locator);
+		//System.out.println("locator" + locator);
 		WebElement deleteUser = driver.findElement(By.xpath(locator));
+		wu.elementToBeClickable(driver,locator);
 		deleteUser.click();
 		driver.switchTo().alert().accept();
+	}
+	
+	public boolean verifySearchButtonIsClickable() {
+		searchButton.click();
+		return searchName.isDisplayed();
 	}
 }

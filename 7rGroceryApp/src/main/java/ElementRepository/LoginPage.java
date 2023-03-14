@@ -6,10 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Utilities.GeneralUtilities;
+import Utilities.WaitUtility;
 
 public class LoginPage {
 	WebDriver driver;
 	GeneralUtilities gu = new GeneralUtilities();
+	WaitUtility wu= new WaitUtility();
 
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
@@ -48,6 +50,7 @@ public class LoginPage {
 	}
 
 	public String getTextOfSignInButton() {
+		wu.presenceOfElementLocated(driver,"//button[@class='btn btn-dark btn-block']" );
 		return gu.getTextOfElements(signInButton);
 	}
 

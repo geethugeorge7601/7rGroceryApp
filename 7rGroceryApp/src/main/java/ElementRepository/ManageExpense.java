@@ -10,10 +10,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import Utilities.GeneralUtilities;
+import Utilities.WaitUtility;
 
 public class ManageExpense {
 	WebDriver driver;
 	GeneralUtilities gu = new GeneralUtilities();
+	WaitUtility wu = new WaitUtility();
 
 	public ManageExpense(WebDriver driver) {
 		this.driver=driver;
@@ -48,7 +50,6 @@ public class ManageExpense {
 	List<WebElement> expenseCategory;
 
 	public void selectExpenseCategoryPage() {
-		System.out.println(manageExpenseTab);
 		manageExpenseTab.click();
 		expenseCategoryTab.click();
 	}
@@ -87,6 +88,7 @@ public class ManageExpense {
 	}
 	public boolean verifyWhetherExpensecategoryIsDeleted(String expenseCategoryName) {
 		deleteExpenseCategory(expenseCategoryName);
+		wu.alertIsPresent(driver);
 		driver.switchTo().alert().accept();
 		return gu.verifyWhetherAnItemIsInList(expenseCategory, expenseCategoryName);
 		

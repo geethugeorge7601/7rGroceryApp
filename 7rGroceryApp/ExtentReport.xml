@@ -11,6 +11,9 @@
 			<class name="TestCases.ManageProductTestCasesNew" />
 			<class name ="TestCases.ManageUsersTestCases" />
 			<class name ="TestCases.AdminUsersTestCases" />
+			<class name ="TestCases.ManageContentTestCases" />
+			<class name ="TestCases.ManageDeliveryBoyTestCases"/>
+			<class name ="TestCases.ManageSliderTestCases"/>
 		</classes>
 	</test>
 </suite>

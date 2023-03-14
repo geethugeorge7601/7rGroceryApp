@@ -25,4 +25,12 @@ public class Constant {
 	public static final String ERRORMESSAGE_PAGETITLE_FONTSIZE = "The Font size of page Title is not as expected";
 	public static final String ERRORMESSAGE_USERSNOTADDED ="Users are not added as expected";
 	public static final String ERRORMESSAGE_USERSNOTDELETED ="User is not Deleted as expected";
+	public static final String ERRORMESSAGE_PAGE_NOTUPDATED ="Page details are not updated as expected";
+	public static final String ERRORMESSAGE_PAGE_NOTADDED ="Page details are not added as expected";
+	public static final String ERRORMESSAGE_SLIDER_NOTADDED ="Slider details are not added as expected";
+	public static final String ERRORMESSAGE_SLIDER_EDITiCON_BGCOLOR ="Background color of edit icon is not as expected";
+	public static final String ERRORMESSAGE_STATUSCHANGE ="User status is not changed as expected";
+	public static final String ERRORMESSAGE_DELIVRYBOYNOTADDED ="Delivery boy is not added as expected";
+	public static final String ERRORMESSAGE_RESETFUNCTIONALITY ="Functionality of ResetButton is not as expected";
+	public static final String ERRORMESSAGE_ADMINUSERS_SEARCHBUTTON ="Search Button is not clickable as expected";
 }
