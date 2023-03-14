@@ -67,8 +67,8 @@ public class ManageContentPage {
 		pageDescription.sendKeys(desc);
 		js.executeScript("window.scrollBy(0,2000)");
 		pageName.sendKeys(name);
-		gu.fileUpload(driver, chooseFileButton, image);
 		js.executeScript("window.scrollBy(0,2000)");
+		gu.fileUpload(driver, chooseFileButton, image);
 		submit.click();	
 	}
 
