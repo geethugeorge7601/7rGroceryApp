@@ -65,7 +65,7 @@ public class ManageContentPage {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
 		pageDescription.sendKeys(desc);
-		js.executeScript("window.scrollBy(0,1000)");
+		js.executeScript("window.scrollBy(0,2000)");
 		pageName.sendKeys(name);
 		gu.fileUpload(driver, chooseFileButton, image);
 		js.executeScript("window.scrollBy(0,2000)");
