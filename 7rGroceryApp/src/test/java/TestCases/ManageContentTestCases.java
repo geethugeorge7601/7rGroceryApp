@@ -30,7 +30,7 @@ public class ManageContentTestCases extends BaseClass {
 		Assert.assertTrue(actual, Constant.ERRORMESSAGE_PAGE_NOTADDED);
 	}
 
-	//@Test(priority = 1,groups = { "regression","sanity" })
+	@Test(priority = 1,groups = { "regression","sanity" })
 	public void verifyPageDetailsCanBeEdited() {
 
 		lp = new LoginPage(driver);
